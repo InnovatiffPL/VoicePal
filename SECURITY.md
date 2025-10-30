@@ -27,7 +27,12 @@ app.use(limiter);
 
 **Note on Testing**
 
-If you are running the project on Replit or other cloud sandbox environments, you might not see the expected HTTP 429 responses when stress-testing the API, due to reverse proxy/load balancer architecture, dynamic agent assignment, or session isolation.
+During development and testing, the express-rate-limit middleware sometimes did not activate after large batches (e.g. 120+ iterations in Postman Runner). However, after a short time or a couple of additional manual requests, the limiter consistently started returning HTTP 429 ("Too many requests") as expected.
+
+This suggests that rate limiting is active and effective, but the enforcement window may behave slightly differently due to the way Replit proxies/networking and IP/session handling work. If you observe irregular activation, try waiting briefly or sending a few more requests to trigger the expected rate limiting behavior.  
+
+In production or on a local server, rate limiting should act strictly according to configuration.
+
 For reliable verification, run the server locally or on a production-like VPS.
 
 This setup meets typical security and anti-abuse requirements for production Express apps. For advanced scenarios or distributed deployments, consider using persistent stores (like Redis) for rate limiter state.
