@@ -71,6 +71,27 @@ app.use(
 
 - I kept all other Helmet security defaults in place (such as XSS protection, X-Frame-Options headers, and similar), but with CSP disabled, the frontend now loads properly without being blocked.
 
+> Rate Limiting
+The backend implements HTTP request rate limiting using the express-rate-limit middleware to protect against abuse (e.g. brute-force, DDoS, automated scraping).
+
+- By default, the limiter is set as a global middleware:
+
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 100,                  // limit each IP to 100 requests per 10 minutes
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' }
+});
+app.use(limiter);
+
+- All endpoints are protected and will respond with HTTP 429 ("Too Many Requests") if the specified limit is exceeded.
+
+## Note on Testing
+
+If you are running the project on Replit or other cloud sandbox environments, you might not see the expected HTTP 429 responses when stress-testing the API, due to reverse proxy/load balancer architecture, dynamic agent assignment, or session isolation.
+For reliable verification, run the server locally or on a production-like VPS.
+
 ## Infrastructure
 
 - Database: Connected to production Replit DB (autoscale, secure; see status for confirmation).
