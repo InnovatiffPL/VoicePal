@@ -64,10 +64,10 @@ The limitation was caused by Helmet's default Content Security Policy (CSP), whi
 
 - I disabled only the strictest policy (CSP) as shown below:
 app.use(
-  helmet({
+ helmet({
     contentSecurityPolicy: false
-  })
-);
+   })
+  );
 
 - I kept all other Helmet security defaults in place (such as XSS protection, X-Frame-Options headers, and similar), but with CSP disabled, the frontend now loads properly without being blocked.
 
