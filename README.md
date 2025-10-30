@@ -1,28 +1,28 @@
 # VoicePal - Meeting Follow-up Assistant
 
-VoicePal is a production-ready tool for audio meeting recording, automatic transcription, and follow-up analysis designed for teams, consultants, and business experts. The system enables easy audio upload, instant transcript and summary generation, and secure, scalable data management.
+VoicePal is a production-ready solution for audio meeting recording, automatic transcription, and follow-up analysis. It is designed for business teams, consultants, and professionals who require secure, scalable meeting documentation.
 
-## Features:
+## Features
 
-> Audio Upload: Supports MP3, WAV, M4A files up to 25MB, with file validation and security filtering.
+- Audio Upload: Supports MP3, WAV, and M4A files up to 25MB, with validation and security filtering.
 
-> Automated Transcription & Analysis: Generates meeting transcripts, action summaries, and status updates.
+- Automated Transcription & Analysis: Generates meeting transcripts, action summaries, and status updates.
 
-> Persistent Meeting Record: Stores files and metadata in a production database for real-time access and history.
+- Persistent Meeting Records: Stores files and metadata in a production database, enabling real-time access and full meeting history.
 
-> Robust REST API: The /api/meetings/process endpoint allows uploading meeting recordings from any client, integration, or tool.
+- Robust REST API: /api/meetings/process allows uploading meeting recordings from any client or integration.
 
-> Production Database Ready: Secure, autoscaling backend (Replit DB) for live user data management and storage.​
+- Production Database Ready: Secure, autoscaling backend (Replit DB) for live user data management and storage.
 
-## How It Works:
+## How It Works
 
-> The user uploads an audio file (MP3/WAV/M4A) through the web UI or REST API.
+1. The user uploads an audio file (MP3/WAV/M4A) via the web UI or REST API.
 
-> File is validated, uploaded to the uploads/ directory, and registered in the production database.
+2. The file is validated, uploaded to the server, and registered in the production database.
 
-> The system transcribes the audio, analyzes the meeting, and archives results and metadata.
+3. The system transcribes the audio, analyzes the meeting, and archives results and metadata.
 
-> Transcript, summary, and meeting details are returned via the frontend or API.
+4. The transcript, actionable summary, and meeting details are returned by the frontend or API.
 
 ## Using the API (Postman Example)
 
@@ -33,10 +33,11 @@ Request Body:
 
 Type: form-data
 
-Key: audio (type: File, value: MP3/WAV/M4A, max 25MB)
+Key: audio (type: File, accepts MP3/WAV/M4A, max 25MB)
 
-Response:
+Sample Response:
 
+### JSON
 {
   "meeting": {
     "id": "string",
@@ -48,48 +49,49 @@ Response:
   }
 }
 
-## Security:
+## Security
 
-Multer middleware handles validation and file limits.
+> File validation and size limits are handled by Multer middleware.
 
-Database operations are secure and production-ready.
+> All database operations are secure and production-ready.
 
-Production-Ready Infrastructure
+> Each endpoint returns clear error codes and messages for API clients.
 
-## Database: Connected to production Replit DB (autoscale, secure; see blue banner for confirmation).​
+## Infrastructure
 
-> Hosting: Public endpoint (https://voice-pal-ai-coretexcopy.replit.app), autoscaling (4 vCPU / 8 GiB RAM).
+- Database: Connected to production Replit DB (autoscale, secure; see status for confirmation).
 
-> Error Handling: Every endpoint returns meaningful error codes and messages for API clients.
+- Hosting: Public endpoint (https://voice-pal-ai-coretexcopy.replit.app), autoscaling (4 vCPU / 8 GiB RAM).
 
-## Sample Workflow:
+## Sample Workflow
 
-- Upload an audio file via the VoicePal web interface or API.
+- Upload an audio file via the VoicePal web interface or API
 
-- The backend saves, processes, and analyzes the content.
+- The backend saves, processes, and analyzes the content
 
-- Get structured JSON output with full metadata and transcript for further integration, reporting, or analysis.
+- Receive structured JSON output with full metadata and transcript, ready for further integration
 
-## Target Audience:
+## Target Audience
 
-Business teams, consultants, HR, educators, and professionals needing reliable, automated meeting documentation.
+> Business teams, consultants, HR, educators, and professionals needing streamlined, automated meeting documentation
 
-B2B integrators and technical partners (Zapier, CRM tools, workflow automation platforms).
+> B2B integrators, CRM and workflow tool partners, and automation platforms
 
-## Technical Overview:
+## Technical Overview
 
-> Backend: Node.js/Express (TypeScript)
+- Backend: Node.js/Express (TypeScript)
 
-> File upload: Multer, with custom file validation and size limits
+- File upload: Multer with custom file validation and size limits
 
-> Database: Production-ready, autoscaling (Replit DB)
+- Database: Production-ready, autoscaling (Replit DB)
 
-> API: RESTful, JSON responses, form-data file upload
+- API: RESTful, JSON responses, form-data file upload
 
-> Secure, scalable, modern architecture for business use
+- Modern, secure, and scalable architecture
 
 ## Author
-Mateusz Gredes
-Lead developer, solution architect, system integrator
 
-Ready for demos, business pilots, integrations, and production deployment. Feel free to reach out, fork, and contribute or connect for feedback and partnerships!
+Mateusz Gredes
+Lead Developer · Solution Architect · System Integrator
+
+Ready for demos, pilots, integrations, and production deployment. Feel free to reach out, fork, contribute, or connect for feedback and partnerships!
