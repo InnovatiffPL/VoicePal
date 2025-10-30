@@ -1,8 +1,8 @@
-#VoicePal – Meeting Follow-up Assistant
+# VoicePal – Meeting Follow-up Assistant
 
 VoicePal is a production-ready tool for audio meeting recording, automatic transcription, and follow-up analysis designed for teams, consultants, and business experts. The system enables easy audio upload, instant transcript and summary generation, and secure, scalable data management.
 
-##Features:
+## Features:
 
 > Audio Upload: Supports MP3, WAV, M4A files up to 25MB, with file validation and security filtering.
 
@@ -14,7 +14,7 @@ VoicePal is a production-ready tool for audio meeting recording, automatic trans
 
 > Production Database Ready: Secure, autoscaling backend (Replit DB) for live user data management and storage.​
 
-##How It Works:
+## How It Works:
 
 > The user uploads an audio file (MP3/WAV/M4A) through the web UI or REST API.
 
@@ -24,7 +24,7 @@ VoicePal is a production-ready tool for audio meeting recording, automatic trans
 
 > Transcript, summary, and meeting details are returned via the frontend or API.
 
-##Using the API (Postman Example)
+## Using the API (Postman Example)
 
 Endpoint:
 POST /api/meetings/process
@@ -48,7 +48,7 @@ Response:
   }
 }
 
-##Security:
+## Security:
 
 Multer middleware handles validation and file limits.
 
@@ -56,27 +56,27 @@ Database operations are secure and production-ready.
 
 Production-Ready Infrastructure
 
-##Database: Connected to production Replit DB (autoscale, secure; see blue banner for confirmation).​
+## Database: Connected to production Replit DB (autoscale, secure; see blue banner for confirmation).​
 
-##Hosting: Public endpoint (https://voice-pal-ai-coretexcopy.replit.app), autoscaling (4 vCPU / 8 GiB RAM).
+> Hosting: Public endpoint (https://voice-pal-ai-coretexcopy.replit.app), autoscaling (4 vCPU / 8 GiB RAM).
 
-##Error Handling: Every endpoint returns meaningful error codes and messages for API clients.
+> Error Handling: Every endpoint returns meaningful error codes and messages for API clients.
 
-##Sample Workflow:
+## Sample Workflow:
 
-Upload an audio file via the VoicePal web interface or API.
+- Upload an audio file via the VoicePal web interface or API.
 
-The backend saves, processes, and analyzes the content.
+- The backend saves, processes, and analyzes the content.
 
-Get structured JSON output with full metadata and transcript for further integration, reporting, or analysis.
+- Get structured JSON output with full metadata and transcript for further integration, reporting, or analysis.
 
-##Target Audience:
+## Target Audience:
 
 Business teams, consultants, HR, educators, and professionals needing reliable, automated meeting documentation.
 
 B2B integrators and technical partners (Zapier, CRM tools, workflow automation platforms).
 
-##Technical Overview:
+## Technical Overview:
 
 > Backend: Node.js/Express (TypeScript)
 
@@ -88,7 +88,7 @@ B2B integrators and technical partners (Zapier, CRM tools, workflow automation p
 
 > Secure, scalable, modern architecture for business use
 
-##Author
+## Author
 Mateusz Gredes
 Lead developer, solution architect, system integrator
 
