@@ -57,6 +57,20 @@ Sample Response:
 
 > Each endpoint returns clear error codes and messages for API clients.
 
+## Known Issues & Workarounds
+
+> Blank page after installing helmet package:
+The limitation was caused by Helmet's default Content Security Policy (CSP), which automatically blocks loading static files—such as index.html, CSS, or script files—in Single Page Applications (SPA) like my frontend (React or Vite, for example). Because of this, instead of the intended UI, users were presented with a blank white page.
+
+- I disabled only the strictest policy (CSP) as shown below:
+app.use(
+  helmet({
+    contentSecurityPolicy: false
+  })
+);
+
+- I kept all other Helmet security defaults in place (such as XSS protection, X-Frame-Options headers, and similar), but with CSP disabled, the frontend now loads properly without being blocked.
+
 ## Infrastructure
 
 - Database: Connected to production Replit DB (autoscale, secure; see status for confirmation).
