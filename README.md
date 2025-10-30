@@ -1,4 +1,4 @@
-# VoicePal – Meeting Follow-up Assistant
+# VoicePal - Meeting Follow-up Assistant
 
 VoicePal is a production-ready tool for audio meeting recording, automatic transcription, and follow-up analysis designed for teams, consultants, and business experts. The system enables easy audio upload, instant transcript and summary generation, and secure, scalable data management.
 
