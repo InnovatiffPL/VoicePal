@@ -63,34 +63,17 @@ Sample Response:
 The limitation was caused by Helmet's default Content Security Policy (CSP), which automatically blocks loading static files—such as index.html, CSS, or script files—in Single Page Applications (SPA) like my frontend (React or Vite, for example). Because of this, instead of the intended UI, users were presented with a blank white page.
 
 - I disabled only the strictest policy (CSP) as shown below:
-app.use(
- helmet({
-    contentSecurityPolicy: false
-   })
-  );
-
 - I kept all other Helmet security defaults in place (such as XSS protection, X-Frame-Options headers, and similar), but with CSP disabled, the frontend now loads properly without being blocked.
+
+[Security details](/SECURITY.md)
 
 > Rate Limiting
 The backend implements HTTP request rate limiting using the express-rate-limit middleware to protect against abuse (e.g. brute-force, DDoS, automated scraping).
 
-- By default, the limiter is set as a global middleware:
-
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100,                  // limit each IP to 100 requests per 10 minutes
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: 'Too many requests, please try again later.' }
-});
-app.use(limiter);
-
+- By default, the limiter is set as a global middleware.
 - All endpoints are protected and will respond with HTTP 429 ("Too Many Requests") if the specified limit is exceeded.
 
-## Note on Testing
-
-If you are running the project on Replit or other cloud sandbox environments, you might not see the expected HTTP 429 responses when stress-testing the API, due to reverse proxy/load balancer architecture, dynamic agent assignment, or session isolation.
-For reliable verification, run the server locally or on a production-like VPS.
+[Security details](/SECURITY.md)
 
 ## Infrastructure
 
