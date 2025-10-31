@@ -36,3 +36,22 @@ In production or on a local server, rate limiting should act strictly according 
 For reliable verification, run the server locally or on a production-like VPS.
 
 This setup meets typical security and anti-abuse requirements for production Express apps. For advanced scenarios or distributed deployments, consider using persistent stores (like Redis) for rate limiter state.
+
+## File Upload & Filename Handling
+
+The application is protected from XSS and code injection attacks using filenames, thanks to server-side sanitization and safe text rendering on the frontend. No further text input from users is currently supported, so no additional sanitization is required for fields.
+
+- MIME type and extension check:
+Only audio files (MP3, WAV, M4A) are accepted. Validation is enforced both on the frontend (input restrictions) and on the backend (using Multer's fileFilter and MIME check). Any non-audio file or incorrect extension will be rejected regardless of client.
+
+- Filename sanitization:
+All original filenames are sanitized server-side to prevent the injection of special characters, HTML or JavaScript content—even if a user attempts to upload a file named, for example, <script>alert(1)</script>.mp3.
+This is implemented via:
+
+const sanitize = (filename: string) => filename.replace(/[^a-zA-Z0-9_\.\-]/g, "_");
+const safeFileName = sanitize(req.file.originalname);
+
+The sanitized filename is used in all storage operations, metadata, database records and API responses. As a result, displaying file names in the UI (e.g. inside React <p> tags) is fully XSS-safe, even if a malicious user tries to inject code through the file name.
+
+- UI rendering:
+In the UI, filenames are displayed as plain text elements. Modern frontend frameworks (like React, Vue, Angular) natively escape all text content rendered via properties/JSX, which further prevents any XSS risk through file name injection.
