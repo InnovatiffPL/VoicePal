@@ -45,7 +45,7 @@ The application is protected from XSS and code injection attacks using filenames
 Only audio files (MP3, WAV, M4A) are accepted. Validation is enforced both on the frontend (input restrictions) and on the backend (using Multer's fileFilter and MIME check). Any non-audio file or incorrect extension will be rejected regardless of client.
 
 - Filename sanitization:
-All original filenames are sanitized server-side to prevent the injection of special characters, HTML or JavaScript content—even if a user attempts to upload a file named, for example, <script>alert(1)</script>.mp3.
+All original filenames are sanitized server-side to prevent the injection of special characters, HTML or JavaScript content - even if a user attempts to upload a file named, for example, <script>alert(1)</script>.mp3.
 This is implemented via:
 
 const sanitize = (filename: string) => filename.replace(/[^a-zA-Z0-9_\.\-]/g, "_");
