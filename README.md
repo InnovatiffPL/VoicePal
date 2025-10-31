@@ -65,13 +65,14 @@ The limitation was caused by Helmet's default Content Security Policy (CSP), whi
 - I disabled only the strictest policy (CSP) as shown below:
 - I kept all other Helmet security defaults in place (such as XSS protection, X-Frame-Options headers, and similar), but with CSP disabled, the frontend now loads properly without being blocked.
 
-[Security details](/SECURITY.md)
-
 > Rate Limiting
 The backend implements HTTP request rate limiting using the express-rate-limit middleware to protect against abuse (e.g. brute-force, DDoS, automated scraping).
 
 - By default, the limiter is set as a global middleware.
 - All endpoints are protected and will respond with HTTP 429 ("Too Many Requests") if the specified limit is exceeded.
+
+> XSS & Code Injection
+The application is protected from XSS and code injection attacks using filenames, thanks to server-side sanitization and safe text rendering on the frontend. No further text input from users is currently supported, so no additional sanitization is required for fields.
 
 [Security details](/SECURITY.md)
 
