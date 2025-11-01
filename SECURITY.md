@@ -55,3 +55,14 @@ The sanitized filename is used in all storage operations, metadata, database rec
 
 - UI rendering:
 In the UI, filenames are displayed as plain text elements. Modern frontend frameworks (like React, Vue, Angular) natively escape all text content rendered via properties/JSX, which further prevents any XSS risk through file name injection.
+
+## CORS Policy (Testing/Development)
+For public testing, evaluation, and integration convenience, the backend is configured with a global, open CORS policy:
+
+import cors from 'cors';
+
+app.use(cors());
+
+- This allows API requests from any frontend origin, including various deployment hosts and localhost environments.
+
+- The setup prevents browser CORS errors during development, presentations, or external recruiter review.
