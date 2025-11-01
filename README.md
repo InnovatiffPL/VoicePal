@@ -74,6 +74,9 @@ The backend implements HTTP request rate limiting using the express-rate-limit m
 > XSS & Code Injection
 The application is protected from XSS and code injection attacks using filenames, thanks to server-side sanitization and safe text rendering on the frontend. No further text input from users is currently supported, so no additional sanitization is required for fields.
 
+> CORS Policy (Testing/Development)
+For public testing, evaluation, and integration convenience, the backend is configured with a global, open CORS policy.
+
 [Security details](/SECURITY.md)
 
 ## Infrastructure
