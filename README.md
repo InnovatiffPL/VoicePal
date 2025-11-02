@@ -4,7 +4,7 @@ VoicePal is a production-ready solution for audio meeting recording, automatic t
 
 ## Features
 
-- Audio Upload: Supports MP3, WAV, and M4A files up to 25MB, with validation and security filtering.
+- Audio Upload: Supports MP3, WAV, and M4A files up to 100MB, with validation and security filtering.
 
 - Automated Transcription & Analysis: Generates meeting transcripts, action summaries, and status updates.
 
@@ -33,7 +33,7 @@ Request Body:
 
 Type: form-data
 
-Key: audio (type: File, accepts MP3/WAV/M4A, max 25MB)
+Key: audio (type: File, accepts MP3/WAV/M4A, max 100MB)
 
 Sample Response:
 
